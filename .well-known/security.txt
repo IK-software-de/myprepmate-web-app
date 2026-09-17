@@ -1,0 +1,7 @@
+# MyPrepMate Web-App security contact
+Canonical: https://app.myprepmate.de/.well-known/security.txt
+Contact: mailto:iksoftware.dev@gmail.com
+Policy: https://myprepmate.de/sicherheit
+Preferred-Languages: de, en
+Acknowledgments: https://myprepmate.de/sicherheit#danksagungen
+Expires: 2027-09-14T23:59:59Z
