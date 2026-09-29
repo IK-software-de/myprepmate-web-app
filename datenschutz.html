@@ -1,174 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzerklärung - PrepMate</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #2980b9;
-            margin-top: 30px;
-        }
-        p, li {
-            font-size: 16px;
-        }
-        .highlight {
-            background-color: #e8f4f8;
-            padding: 15px;
-            border-left: 4px solid #2980b9;
-            margin: 20px 0;
-            font-weight: 500;
-        }
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://myprepmate.de/datenschutz">
+  <meta http-equiv="refresh" content="0;url=https://myprepmate.de/datenschutz">
+  <title>Datenschutzerklärung – MyPrepMate</title>
+  <script>
+    window.location.replace('https://myprepmate.de/datenschutz');
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Datenschutzerklärung für PrepMate</h1>
-        <p><strong>Stand: Juli 2026</strong></p>
-
-        <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie darüber, wie wir mit Ihren Daten bei der Nutzung der App <strong>PrepMate</strong> umgehen.</p>
-
-        <div class="highlight">
-            <strong>Offline-First mit optionalem Cloud-Sync:</strong> PrepMate arbeitet standardmäßig lokal auf Ihrem Gerät. Sie können die App vollständig ohne ein Benutzerkonto verwenden. Optional können Sie ein kostenloses Konto erstellen, um Ihre Daten (Rezepte, Einkaufslisten, Körperwerte und Fortschrittsfotos) in einer sicheren Cloud zu sichern und geräteübergreifend zu synchronisieren.
-        </div>
-
-        <h2>1. Verantwortlicher</h2>
-        <p>Verantwortlich für die Datenverarbeitung in dieser App im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
-        <p>
-            <strong>IkSoftware (Ioannis Karakatsanis)</strong><br>
-            Projensdorferstraße 70<br>
-            24106 Kiel<br>
-            Deutschland<br>
-            E-Mail: <a href="mailto:iksoftware.dev@gmail.com">iksoftware.dev@gmail.com</a>
-        </p>
-
-        <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
-        <p><strong>Lokale Speicherung (Standard):</strong> Wenn Sie kein Konto erstellen, werden alle von Ihnen eingegebenen Daten (Rezepte, Einkaufslisten, Körpermaße, Gewicht und Fotos) ausschließlich lokal in einer SQLite-Datenbank auf Ihrem Mobilgerät gespeichert. Wir haben keinen Zugriff auf diese Daten.</p>
-        <p><strong>Optionale Cloud-Synchronisation:</strong> Wenn Sie sich entscheiden, ein Konto zu erstellen und zu sichern, werden Ihre Daten verschlüsselt an unsere Backend-Infrastruktur (bereitgestellt durch Supabase) übertragen und dort sicher gespeichert, um Ihnen ein Backup und eine geräteübergreifende Synchronisation zu ermöglichen.</p>
-        
-        <p><strong>Rechtsgrundlagen der Verarbeitung:</strong></p>
-        <ul>
-            <li>Die App-Nutzung und Bereitstellung der Cloud-Sync-Funktionen erfolgt auf Basis der <strong>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</strong>.</li>
-            <li><strong>Sensible Daten (Gesundheitsdaten):</strong> Gewicht, Körpermaße und Fortschrittsfotos gelten als Gesundheitsdaten. Durch die freiwillige Eingabe in die App erteilen Sie uns Ihre ausdrückliche <strong>Einwilligung (Art. 9 Abs. 2 lit. a DSGVO i.V.m. Art. 6 Abs. 1 lit. a DSGVO)</strong> zur lokalen Speicherung bzw. zur verschlüsselten Cloud-Synchronisation. Sie können diese Einwilligung jederzeit durch Löschen der entsprechenden Daten oder des Accounts widerrufen.</li>
-        </ul>
-
-        <h2>3. Kameranutzung (Geräte-Berechtigungen)</h2>
-        <p>Die App benötigt für bestimmte Funktionen Zugriff auf die Kamera Ihres Geräts:</p>
-        <ul>
-            <li><strong>Barcode-Scanner:</strong> Zum Einscannen von Lebensmittel-Barcodes, um Nährwertdaten abzurufen.</li>
-            <li><strong>Foto-Funktion (Body-Tracking &amp; Rezepte):</strong> Zum Aufnehmen und Speichern von Fortschrittsfotos sowie Rezeptbildern.</li>
-        </ul>
-        <p><strong>Datenübertragung:</strong> Im lokalen Modus verbleiben alle Bilder ausschließlich auf Ihrem Gerät. Bei aktiviertem Cloud-Sync werden diese verschlüsselt in Ihren privaten Cloud-Speicher übertragen.</p>
-
-        <h2>4. Open Food Facts API (Nährwertdaten)</h2>
-        <p>Um Ihnen Nährwertdaten zu Lebensmitteln bereitzustellen, nutzt PrepMate die Programmierschnittstelle (API) von <strong>Open Food Facts</strong>.</p>
-        <ul>
-            <li>Bei der Barcode-Suche oder manuellen Produktsuche wird eine anonyme Anfrage (GET-Request) an die Server von Open Food Facts gesendet.</li>
-            <li>Dabei werden keine persönlichen Daten übertragen. Es wird lediglich die IP-Adresse des anfragenden Geräts (technisch bedingt) sowie ein anonymisierter App-User-Agent übermittelt. Rechtsgrundlage hierfür ist unser <strong>berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO)</strong> an der Bereitstellung der Kernfunktionen (Nährwertauskunft) der App.</li>
-            <li>Weitere Informationen finden Sie in der Datenschutzerklärung von Open Food Facts unter <a href="https://world.openfoodfacts.org/terms-of-use" target="_blank" rel="noopener">world.openfoodfacts.org/terms-of-use</a>.</li>
-        </ul>
-
-        <h2>5. Community-Rezepte und nutzergenerierte Inhalte</h2>
-        <p>Wenn Sie ein Rezept in der PrepMate-Community veröffentlichen, werden der Rezepttitel, Ihr öffentlicher Benutzername bzw. Autoren-Handle, Zutaten-Tags, Nährwertangaben, Zubereitungszeit, Rezeptbild und der vollständige Rezeptinhalt öffentlich für andere Nutzer der Community sichtbar. Veröffentlichen Sie daher keine personenbezogenen Daten, die Sie nicht öffentlich machen möchten.</p>
-        <p>Ihr Benutzername ist in der Community öffentlich sichtbar und wird auch in Ihrer Account-Übersicht als Kennung verwendet. Bitte wählen Sie deshalb keinen Benutzernamen, der Ihre E-Mail-Adresse, Ihren Klarnamen oder andere sensible personenbezogene Daten enthält.</p>
-        <p>Zur Durchsetzung unserer <a href="community-richtlinien.html">Community-Richtlinien</a> speichern wir die Annahme der Richtlinienversion, Inhaltsmeldungen und Moderationsentscheidungen. Eine Meldung enthält die Nutzer-ID des Melders, das gemeldete Rezept, den Meldungsgrund, einen optionalen Hinweis und einen Snapshot der gemeldeten Inhalte. Diese Daten sind nicht öffentlich und nur für die Moderation zugänglich.</p>
-        <p>Die Funktion zum Blockieren von Community-Autoren wird lokal auf Ihrem Gerät gespeichert. Sie blendet deren Inhalte auf diesem Gerät aus und wird in dieser Version nicht zwischen Geräten synchronisiert.</p>
-
-        <h2>6. Support-Tickets und Kontakt-E-Mail</h2>
-        <p>Wenn Sie über die Funktion „Support &amp; Feedback“ ein Ticket senden, verarbeiten wir die ausgewählte Kategorie, Betreff, Beschreibung und die von Ihnen angegebene Kontakt-E-Mail-Adresse. Zusätzlich wird die technische Nutzer-ID der aktiven Supabase-Sitzung zur Zugriffskontrolle gespeichert. Ticket- und Kommentardaten sind nicht öffentlich und nur für aktive Community-Moderatoren und Administratoren über geschützte Datenbankfunktionen zugänglich.</p>
-        <p>Die Kontakt-E-Mail wird nur zur Bearbeitung der Support-Anfrage verwendet. In dieser Ausbaustufe werden keine Bilder, Screenshots oder anderen Anhänge angenommen. Erledigte Tickets werden sieben Tage nach ihrer Erledigung archiviert. Archivierte Tickets werden 30 Tage nach ihrer Archivierung einschließlich interner Kommentare endgültig gelöscht; diese Fristen gelten auch für manuell archivierte Tickets.</p>
-
-        <h2 id="gesundheitsdaten">7. Gesundheitsdaten (Google Health Connect und Apple Health)</h2>
-        <p>Die App kann auf Wunsch Gesundheitsdaten mit <strong>Google Health Connect</strong> (Android) bzw. <strong>Apple Health</strong> (iOS) austauschen. Diese Funktion ist standardmäßig deaktiviert. Es werden erst dann Daten gelesen oder geschrieben, wenn Sie die Verbindung in den Einstellungen unter „Health Connect &amp; Apple Health“ ausdrücklich herstellen und die Berechtigungen im Systemdialog erteilen. Sie entscheiden dabei für jede Kategorie und jede Richtung einzeln.</p>
-        <p><strong>Gelesen werden</strong> — jeweils nur bei aktivierter Freigabe: Gewicht, Körpergröße, Ernährungsdaten (Kalorien und Makronährstoffe), Wasseraufnahme, aktiv verbrannte Kalorien und Schritte.</p>
-        <p><strong>Geschrieben werden</strong> — jeweils nur bei aktivierter Freigabe: Mahlzeiten, Gewichtswerte und Wassermengen, die Sie selbst in der App erfasst haben. Aus der Health-Plattform übernommene Einträge werden nie zurückgeschrieben.</p>
-        <p><strong>Zweck und Rechtsgrundlage:</strong> Die Verarbeitung dient ausschließlich der Darstellung und Auswertung in Ihrem eigenen Konto (Tagebuch, Tagesbilanz, Gewichtsverlauf). Rechtsgrundlage ist Ihre ausdrückliche Einwilligung (Art. 9 Abs. 2 lit. a DSGVO), die Sie jederzeit widerrufen können. Gesundheitsdaten werden <strong>nicht</strong> an Dritte weitergegeben, nicht für Werbung genutzt, nicht verkauft und nicht über Ihr eigenes Konto hinaus ausgewertet.</p>
-        <p><strong>Wichtig — was Ihr Gerät verlässt:</strong> Übernommene <strong>Gewichtswerte</strong> werden gemeinsam mit Ihren übrigen Körpermessungen in Ihren privaten Cloud-Speicher synchronisiert, sobald Sie ein Konto nutzen. Übernommene <strong>Ernährungs-, Wasser- und Aktivitätsdaten</strong> verlassen Ihr Gerät nicht. Ohne Konto (Gastmodus) verlässt kein übernommener Gesundheitswert Ihr Gerät. Derselbe Hinweis steht in der App unmittelbar am Schalter für den Gewichts-Import.</p>
-        <p><strong>Aktivitätsdaten</strong> (aktiv verbrannte Kalorien, Schritte) werden ausschließlich für die Anzeige des jeweils betrachteten Tages gelesen und weder gespeichert noch synchronisiert.</p>
-        <p><strong>Widerruf und Löschung:</strong> Sie können die Verbindung jederzeit in den Einstellungen unter „Health Connect &amp; Apple Health“ trennen; dabei bieten wir Ihnen an, alle bereits übernommenen Einträge lokal zu löschen. Selbst erfasste Einträge bleiben in jedem Fall erhalten. Unabhängig davon können Sie die Berechtigungen in den Systemeinstellungen entziehen (Android: „Health Connect → App-Berechtigungen“, iOS: „Einstellungen → Health → Datenzugriff“). Bereits an die Health-Plattform geschriebene Einträge verwalten und löschen Sie dort.</p>
-
-        <h2 id="ki-funktionen">8. Künstliche Intelligenz (KI-Funktionen)</h2>
-        <p>PrepMate bietet optionale Funktionen zur KI-gestützten Unterstützung an (Erkennung von Mahlzeiten per Foto, Rezeptentwürfe aus Fotos, Textoptimierung im Rezept-Editor und automatisierte Wochenplanung).</p>
-        <p><strong>A. On-Device-Verarbeitung (auf dem Gerät):</strong> Soweit Ihr Gerät dies technisch unterstützt (z. B. Android-Geräte mit integriertem Gemini Nano Modell), erfolgt die Textoptimierung im Rezept-Editor sowie Teile der Wochenplanung direkt lokal auf Ihrem Smartphone. Dabei verlassen keinerlei Daten Ihr Gerät; es findet keine Übertragung an uns oder Dritte statt.</p>
-        <p><strong>B. Cloud-KI-Funktionen (Google Gemini API):</strong> Für komplexe Aufgaben (insbesondere die Bildanalyse von Mahlzeiten und Rezepten sowie Cloud-gestützte Text- und Planungsfunktionen) nutzt die App die Programmierschnittstelle (API) von <strong>Google (Google LLC bzw. Google Ireland Limited)</strong> über ein geschütztes Backend-Gateway. Diese Funktionen stehen nur nach vorheriger individueller Freischaltung und erst nach Ihrer ausdrücklichen Einwilligung in der App zur Verfügung.</p>
-        <ul>
-            <li><strong>Übermittelte Daten:</strong> Es werden ausschließlich die für die jeweilige Anfrage erforderlichen Inhalte übermittelt: das aufgenommene Foto einer Mahlzeit oder eines Rezepts, die vom Nutzer eingegebenen Rezepttexte oder die Liste der im Profil gespeicherten Rezepte (Name, Nährwerte, Kategorien) für die Wochenplanung. Es werden keine Nutzerkontodaten, Klarnamen oder Passwörter an Google übertragen.</li>
-            <li><strong>Rechtsgrundlage:</strong> Rechtsgrundlage für die Verarbeitung und Übermittlung ist Ihre ausdrückliche Einwilligung gemäß <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> (sowie ggf. Art. 9 Abs. 2 lit. a DSGVO, soweit in Rezepten oder Mahlzeiten Rückschlüsse auf gesundheitliche Aspekte wie Unverträglichkeiten liegen können). Sie können diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</li>
-            <li><strong>Keine Speicherung von Fotos:</strong> PrepMate speichert Ihre zur Analyse aufgenommenen Fotos weder in der Cloud noch auf eigenen Servern; die Bilder werden ausschließlich für die Dauer der Auswertung im Arbeitsspeicher des Gateways verarbeitet und an die Gemini API weitergeleitet.</li>
-            <li><strong>Drittlandtransfer &amp; Testphase:</strong> Bei Nutzung der Google Gemini API kann eine Datenübermittlung in die USA (Drittland) stattfinden. Die Übermittlung stützt sich auf das EU-U.S. Data Privacy Framework bzw. Standardvertragsklauseln der Europäischen Kommission. Während der aktuellen Testphase (Free Tier der Gemini Developer API) weisen wir darauf hin, dass Google eingegebene Daten zur Verbesserung seiner Dienste und Produkte verarbeiten kann; fotografieren oder übermitteln Sie daher keine Personen, Ausweisdokumente oder sonstige sensible Inhalte.</li>
-        </ul>
-
-        <h2>9. Weitergabe von Daten an Dritte</h2>
-        <p>Eine Weitergabe Ihrer persönlichen Daten an sonstige Dritte findet nicht statt. Für die optionale Cloud-Synchronisation, Authentifizierung und Community-Funktionen nutzen wir die sicheren Dienste von Supabase (Server-Standorte innerhalb der EU). Wenn Sie Rezepte über die Teilen-Funktion teilen oder veröffentlichen, tun Sie dies ausdrücklich selbst.</p>
-        <p><strong>KI-Dienste (Google):</strong> Bei ausdrücklicher Nutzung der Cloud-KI-Funktionen werden die relevanten Anfrageinhalte (z. B. Fotos oder Rezepttexte) an Google (Google Ireland Limited / Google LLC) als Dienstanbieter übermittelt (Details siehe Abschnitt „KI-Funktionen“).</p>
-        <p><strong>E-Mail-Versand:</strong> Für den Versand von Bestätigungs- und Sicherheits-E-Mails (z. B. Bestätigungscodes beim Verknüpfen oder Ändern Ihrer E-Mail-Adresse sowie beim Zurücksetzen Ihres Passworts) nutzen wir den Dienst Resend (Resend, Inc.) als Auftragsverarbeiter. Dabei werden Ihre E-Mail-Adresse und die technischen Versandinformationen (Zeitpunkt, Zustellstatus) verarbeitet, um die Zustellung sicherzustellen und Zustellprobleme zu erkennen. Der Versand erfolgt über Server innerhalb der EU. Es findet kein Versand von Werbung oder Newslettern statt.</p>
-
-        <h2 id="loeschung">10. Ihre Rechte (Betroffenenrechte) und Datenlöschung</h2>
-        <p>Nach der DSGVO haben Sie weitreichende Rechte bezüglich Ihrer Daten:</p>
-        <ul>
-            <li><strong>Auskunft (Art. 15 DSGVO):</strong> Sie haben das Recht, Auskunft über die von uns verarbeiteten Daten zu erhalten.</li>
-            <li><strong>Berichtigung (Art. 16 DSGVO):</strong> Sie können die Berichtigung unrichtiger Daten verlangen (z.B. über Ihr Profil in der App).</li>
-            <li><strong>Löschung (Art. 17 DSGVO):</strong> Sie haben das Recht auf Löschung Ihrer Daten (Details siehe unten).</li>
-            <li><strong>Einschränkung (Art. 18 DSGVO) & Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie können die Einschränkung der Verarbeitung verlangen und haben das Recht, Ihre Daten in einem strukturierten Format zu erhalten.</li>
-            <li><strong>Widerruf (Art. 7 Abs. 3 DSGVO):</strong> Sie können erteilte Einwilligungen (z.B. für Gesundheitsdaten) jederzeit mit Wirkung für die Zukunft widerrufen.</li>
-            <li><strong>Beschwerderecht (Art. 77 DSGVO):</strong> Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.</li>
-        </ul>
-
-        <h3>A. Account-Löschung über die App (Sofortige Löschung)</h3>
-        <p>Sie können die Löschung direkt in der App vornehmen. Dies ist der empfohlene, schnellste Weg:</p>
-        <ol>
-            <li>Öffnen Sie die App <strong>PrepMate</strong>.</li>
-            <li>Navigieren Sie zu den <strong>Einstellungen</strong> (Zahnrad-Symbol im Profil- oder Menübereich).</li>
-            <li>Wählen Sie den Menüpunkt <strong>Konto</strong> (bzw. Account) aus.</li>
-            <li>Tippen Sie auf <strong>"Account löschen"</strong>.</li>
-            <li>Bestätigen Sie die Löschung durch erneute Eingabe Ihrer Anmeldedaten (Re-Authentifizierung).</li>
-        </ol>
-        <p><strong>Zustand nach der Löschung:</strong> Alle lokalen Anwendungsdaten auf dem Gerät sowie alle auf den Cloud-Servern (Supabase) gespeicherten Daten (inklusive E-Mail-Adresse, Authentifizierungsdaten, Rezepten, Mahlzeitenplänen, Einkaufslisten, Körpermaßen und allen Fortschritts- sowie Rezeptfotos) werden <strong>sofort und unwiderruflich gelöscht</strong>. Es findet keine Aufbewahrung statt.</p>
-
-        <h3>B. Löschung per E-Mail-Anforderung</h3>
-        <p>Falls Sie keinen Zugriff mehr auf die App haben, können Sie die Löschung Ihres Kontos und aller zugehörigen Daten auch formlos per E-Mail anfordern:</p>
-        <ul>
-            <li>Senden Sie eine E-Mail an: <a href="mailto:iksoftware.dev@gmail.com">iksoftware.dev@gmail.com</a></li>
-            <li>Betreff: <strong>Konto- und Datenlöschung PrepMate</strong></li>
-            <li>Geben Sie in der E-Mail die **E-Mail-Adresse** an, mit der Sie Ihr PrepMate-Konto registriert haben.</li>
-        </ul>
-        <p>Nach erfolgreicher Überprüfung Ihrer Identität (Inhaberschaft der E-Mail-Adresse) werden wir Ihr Konto und alle zugehörigen Daten **innerhalb von maximal 7 Tagen** vollständig und unwiderruflich von allen Cloud-Servern löschen.</p>
-
-        <h3>C. Löschung lokaler Daten ohne Konto</h3>
-        <p>Wenn Sie kein Cloud-Konto erstellt haben und die App als anonymer Gast nutzen, können Sie alle lokalen Daten jederzeit in den App-Einstellungen über die Schaltfläche <strong>"Alle lokalen Daten löschen"</strong> vollständig und unwiderruflich von Ihrem Gerät entfernen oder einfach die App deinstallieren.</p>
-
-        <h2>11. Änderungen dieser Datenschutzerklärung</h2>
-        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer App-Funktionen umzusetzen.</p>
-
-        <footer>
-            <p>&copy; 2026 PrepMate. Alle Rechte vorbehalten.</p>
-        </footer>
-    </div>
+  <main>
+    <h1>Datenschutzerklärung – MyPrepMate</h1>
+    <p>Die aktuelle Datenschutzerklärung gilt für Website und App:</p>
+    <p><a href="https://myprepmate.de/datenschutz">myprepmate.de/datenschutz</a></p>
+  </main>
 </body>
 </html>
