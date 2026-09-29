@@ -15,6 +15,10 @@
       var base = isProjectSite ? '/prepmate/' : '/';
       var routeSegments = isProjectSite ? segments.slice(1) : segments;
       var route = routeSegments.join('/');
+      if (route === 'datenschutz') {
+        location.replace('https://myprepmate.de/datenschutz');
+        return;
+      }
       var query = location.search ? '&' + location.search.slice(1).replace(/&/g, '~and~') : '';
       location.replace(
         location.protocol + '//' + location.host + base + '/?/' + route + query + location.hash
