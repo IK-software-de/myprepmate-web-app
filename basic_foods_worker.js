@@ -1281,6 +1281,21 @@
         return string.replace(/[[\]{}()*+?.\\^$|]/g, "\\$&");
       return string;
     },
+    _KeysOrValuesOrElementsIterator: function _KeysOrValuesOrElementsIterator(t0, t1, t2) {
+      var _ = this;
+      _._elements = t0;
+      _.__js_helper$_length = t1;
+      _.__js_helper$_index = 0;
+      _.__js_helper$_current = null;
+      _.$ti = t2;
+    },
+    ConstantSet: function ConstantSet() {
+    },
+    ConstantStringSet: function ConstantStringSet(t0, t1, t2) {
+      this._jsIndex = t0;
+      this.__js_helper$_length = t1;
+      this.$ti = t2;
+    },
     SafeToStringHook: function SafeToStringHook() {
     },
     TypeErrorDecoder: function TypeErrorDecoder(t0, t1, t2, t3, t4, t5) {
@@ -3772,7 +3787,7 @@
       this._name = t2;
     },
     BasicFoodEntry_tryParse(json, expectedSourceId) {
-      var t1, $name, categoryValue, category, unit, kcal, protein, carbs, fat, source, pieceWeightRaw, pieceWeightGrams, aliasesRaw, aliases, _i, alias, _null = null,
+      var t1, $name, categoryValue, category, unitValue, isWholeEgg, parsedUnit, unit, rawKcal, rawProtein, rawCarbs, rawFat, kcal, protein, carbs, fat, source, pieceWeightRaw, pieceWeightGrams, aliasesRaw, aliases, _i, alias, _null = null,
         slug = json.$index(0, "slug");
       if (typeof slug == "string") {
         t1 = $.$get$_slugPattern();
@@ -3790,13 +3805,20 @@
       category = A.BasicFoodCategory_tryParse(categoryValue);
       if (category == null)
         return _null;
-      unit = A.BasicFoodEntry__parseUnit(json.$index(0, "unit"));
+      unitValue = json.$index(0, "unit");
+      isWholeEgg = B.Set_vioq9.contains$1(0, slug);
+      parsedUnit = A.BasicFoodEntry__parseUnit(unitValue);
+      unit = isWholeEgg ? B.FoodType_2 : parsedUnit;
       if (unit == null)
         return _null;
-      kcal = A.BasicFoodEntry__parseNutrient(json.$index(0, "kcal"));
-      protein = A.BasicFoodEntry__parseNutrient(json.$index(0, "protein"));
-      carbs = A.BasicFoodEntry__parseNutrient(json.$index(0, "carbs"));
-      fat = A.BasicFoodEntry__parseNutrient(json.$index(0, "fat"));
+      rawKcal = A.BasicFoodEntry__parseNutrient(json.$index(0, "kcal"));
+      rawProtein = A.BasicFoodEntry__parseNutrient(json.$index(0, "protein"));
+      rawCarbs = A.BasicFoodEntry__parseNutrient(json.$index(0, "carbs"));
+      rawFat = A.BasicFoodEntry__parseNutrient(json.$index(0, "fat"));
+      kcal = isWholeEgg ? A.per100gToMediumEgg(rawKcal) : rawKcal;
+      protein = isWholeEgg ? A.per100gToMediumEgg(rawProtein) : rawProtein;
+      carbs = isWholeEgg ? A.per100gToMediumEgg(rawCarbs) : rawCarbs;
+      fat = isWholeEgg ? A.per100gToMediumEgg(rawFat) : rawFat;
       if (kcal == null || protein == null || carbs == null || fat == null)
         return _null;
       source = json.$index(0, "source");
@@ -3985,6 +4007,9 @@
     },
     throwLateFieldADI(fieldName) {
       throw A.initializeExceptionWrapper(new A.LateError("Field '" + fieldName + "' has been assigned during initialization."), new Error());
+    },
+    per100gToMediumEgg(value) {
+      return value == null ? null : value * 50 / 100;
     },
     encodeBasicFoodsDataset(dataset) {
       var t4, t5, t6, _i, food, t7, t8,
@@ -4363,6 +4388,45 @@
     }
   };
   A.FixedLengthListMixin.prototype = {};
+  A._KeysOrValuesOrElementsIterator.prototype = {
+    get$current() {
+      var t1 = this.__js_helper$_current;
+      return t1 == null ? this.$ti._precomputed1._as(t1) : t1;
+    },
+    moveNext$0() {
+      var _this = this,
+        t1 = _this.__js_helper$_index;
+      if (t1 >= _this.__js_helper$_length) {
+        _this.__js_helper$_current = null;
+        return false;
+      }
+      _this.__js_helper$_current = _this._elements[t1];
+      _this.__js_helper$_index = t1 + 1;
+      return true;
+    },
+    $isIterator: 1
+  };
+  A.ConstantSet.prototype = {};
+  A.ConstantStringSet.prototype = {
+    get$length(_) {
+      return this.__js_helper$_length;
+    },
+    get$iterator(_) {
+      var t1, _this = this,
+        keys = _this.$keys;
+      if (keys == null) {
+        keys = Object.keys(_this._jsIndex);
+        _this.$keys = keys;
+      }
+      t1 = keys;
+      return new A._KeysOrValuesOrElementsIterator(t1, t1.length, _this.$ti._eval$1("_KeysOrValuesOrElementsIterator<1>"));
+    },
+    contains$1(_, key) {
+      if ("__proto__" === key)
+        return false;
+      return this._jsIndex.hasOwnProperty(key);
+    }
+  };
   A.SafeToStringHook.prototype = {};
   A.TypeErrorDecoder.prototype = {
     matchTypeError$1(message) {
@@ -4482,7 +4546,7 @@
       return this.__js_helper$_length;
     },
     get$keys() {
-      return new A.LinkedHashMapKeysIterable(this, this.$ti._eval$1("LinkedHashMapKeysIterable<1>"));
+      return new A.LinkedHashMapKeysIterable(this, A._instanceType(this)._eval$1("LinkedHashMapKeysIterable<1>"));
     },
     $index(_, key) {
       var strings, cell, t1, nums, _null = null;
@@ -4516,7 +4580,7 @@
     },
     $indexSet(_, key, value) {
       var strings, nums, rest, hash, bucket, index, _this = this,
-        t1 = _this.$ti;
+        t1 = A._instanceType(_this);
       t1._precomputed1._as(key);
       t1._rest[1]._as(value);
       if (typeof key == "string") {
@@ -4529,7 +4593,7 @@
         rest = _this.__js_helper$_rest;
         if (rest == null)
           rest = _this.__js_helper$_rest = _this._newHashTable$0();
-        hash = J.get$hashCode$(key) & 1073741823;
+        hash = _this.internalComputeHashCode$1(key);
         bucket = rest[hash];
         if (bucket == null)
           rest[hash] = [_this._newLinkedCell$2(key, value)];
@@ -4544,7 +4608,7 @@
     },
     forEach$1(_, action) {
       var cell, modifications, _this = this;
-      _this.$ti._eval$1("~(1,2)")._as(action);
+      A._instanceType(_this)._eval$1("~(1,2)")._as(action);
       cell = _this._first;
       modifications = _this._modifications;
       while (cell != null) {
@@ -4556,7 +4620,7 @@
     },
     __js_helper$_addHashTableEntry$3(table, key, value) {
       var cell,
-        t1 = this.$ti;
+        t1 = A._instanceType(this);
       t1._precomputed1._as(key);
       t1._rest[1]._as(value);
       cell = table[key];
@@ -4567,7 +4631,7 @@
     },
     _newLinkedCell$2(key, value) {
       var _this = this,
-        t1 = _this.$ti,
+        t1 = A._instanceType(_this),
         cell = new A.LinkedHashMapCell(t1._precomputed1._as(key), t1._rest[1]._as(value));
       if (_this._first == null)
         _this._first = _this._last = cell;
@@ -4577,8 +4641,11 @@
       _this._modifications = _this._modifications + 1 & 1073741823;
       return cell;
     },
+    internalComputeHashCode$1(key) {
+      return J.get$hashCode$(key) & 1073741823;
+    },
     __js_helper$_getBucket$2(table, key) {
-      return table[J.get$hashCode$(key) & 1073741823];
+      return table[this.internalComputeHashCode$1(key)];
     },
     internalFindBucketIndex$2(bucket, key) {
       var $length, i;
@@ -5539,7 +5606,7 @@
   };
   A.SetBase.prototype = {
     map$1$1(_, f, $T) {
-      var t1 = this.$ti;
+      var t1 = A._instanceType(this);
       return new A.EfficientLengthMappedIterable(this, t1._bind$1($T)._eval$1("1(2)")._as(f), t1._eval$1("@<1>")._bind$1($T)._eval$1("EfficientLengthMappedIterable<1,2>"));
     },
     toString$0(_) {
@@ -5568,7 +5635,7 @@
     get$keys() {
       if (this._processed == null) {
         var t1 = this._data;
-        return new A.LinkedHashMapKeysIterable(t1, t1.$ti._eval$1("LinkedHashMapKeysIterable<1>"));
+        return new A.LinkedHashMapKeysIterable(t1, A._instanceType(t1)._eval$1("LinkedHashMapKeysIterable<1>"));
       }
       return new A._JsonMapKeyIterable(this);
     },
@@ -6037,7 +6104,7 @@
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, A.SafeToStringHook, J.ArrayIterator, A.Error, A.SentinelValue, A.Iterable, A.ListIterator, A.MappedIterator, A.FixedLengthListMixin, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A._StackTrace, A.Closure, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A._TimerImpl, A.AsyncError, A._Completer, A._FutureListener, A._Future, A._AsyncCallbackEntry, A._Zone, A._HashMapKeyIterator, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A.ListBase, A.Codec, A.Converter, A.DateTime, A._Enum, A.StackOverflowError, A._Exception, A.FormatException, A.Null, A._StringStackTrace, A.StringBuffer, A.NullRejectionException, A.BasicFoodEntry, A.BasicFoodsDatasetException, A.BasicFoodsDataset, A.BasicFoodsSourceInfo]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, A.SafeToStringHook, J.ArrayIterator, A.Error, A.SentinelValue, A.Iterable, A.ListIterator, A.MappedIterator, A.FixedLengthListMixin, A._KeysOrValuesOrElementsIterator, A.SetBase, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A._StackTrace, A.Closure, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A._TimerImpl, A.AsyncError, A._Completer, A._FutureListener, A._Future, A._AsyncCallbackEntry, A._Zone, A._HashMapKeyIterator, A._LinkedHashSetCell, A._LinkedHashSetIterator, A.ListBase, A.Codec, A.Converter, A.DateTime, A._Enum, A.StackOverflowError, A._Exception, A.FormatException, A.Null, A._StringStackTrace, A.StringBuffer, A.NullRejectionException, A.BasicFoodEntry, A.BasicFoodsDatasetException, A.BasicFoodsDataset, A.BasicFoodsSourceInfo]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JavaScriptBigInt, J.JavaScriptSymbol, J.JSNumber, J.JSString]);
     _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, J.JSArray, A.NativeByteBuffer, A.NativeTypedData]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
@@ -6049,6 +6116,8 @@
     _inheritMany(A.EfficientLengthIterable, [A.ListIterable, A.LinkedHashMapKeysIterable, A._HashMapKeyIterable]);
     _inherit(A.EfficientLengthMappedIterable, A.MappedIterable);
     _inheritMany(A.ListIterable, [A.MappedListIterable, A._JsonMapKeyIterable]);
+    _inheritMany(A.SetBase, [A.ConstantSet, A._SetBase]);
+    _inherit(A.ConstantStringSet, A.ConstantSet);
     _inherit(A.NullError, A.TypeError);
     _inheritMany(A.Closure, [A.Closure0Args, A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A._AsyncRun__initializeScheduleImmediate_internalCallback, A._AsyncRun__initializeScheduleImmediate_closure, A._Future__propagateToListeners_handleWhenCompleteCallback_closure, A.jsify__convert, A.promiseToFuture_closure, A.promiseToFuture_closure0, A.dartify_convert, A.main_closure]);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
@@ -6067,7 +6136,6 @@
     _inherit(A._AsyncCompleter, A._Completer);
     _inherit(A._RootZone, A._Zone);
     _inherit(A._IdentityHashMap, A._HashMap);
-    _inherit(A._SetBase, A.SetBase);
     _inherit(A._LinkedHashSet, A._SetBase);
     _inherit(A.JsonCodec, A.Codec);
     _inherit(A.JsonDecoder, A.Converter);
@@ -6088,7 +6156,7 @@
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"JavaScriptFunction":"LegacyJavaScriptObject","PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","NativeArrayBuffer":"NativeByteBuffer","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JavaScriptObject":{"JSObject":[]},"LegacyJavaScriptObject":{"JSObject":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"JSObject":[],"Iterable":["1"]},"JSArraySafeToStringHook":{"SafeToStringHook":[]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"JSObject":[],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"double":[],"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"double":[],"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"TrustedGetRuntimeType":[]},"LateError":{"Error":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListIterable.E":"2"},"NullError":{"TypeError":[],"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"_StackTrace":{"StackTrace":[]},"Closure":{"Function":[]},"Closure0Args":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"RuntimeError":{"Error":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"LinkedHashMapKeysIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"NativeByteBuffer":{"JSObject":[],"ByteBuffer":[],"TrustedGetRuntimeType":[]},"NativeTypedData":{"JSObject":[]},"NativeByteData":{"ByteData":[],"JSObject":[],"TrustedGetRuntimeType":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"],"JSObject":[]},"NativeTypedArrayOfDouble":{"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeFloat32List":{"Float32List":[],"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"],"TrustedGetRuntimeType":[],"ListBase.E":"double"},"NativeFloat64List":{"Float64List":[],"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"],"TrustedGetRuntimeType":[],"ListBase.E":"double"},"NativeInt16List":{"Int16List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeInt32List":{"Int32List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeInt8List":{"Int8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint16List":{"Uint16List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint32List":{"Uint32List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8ClampedList":{"Uint8ClampedList":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Error":{"Error":[]},"_TypeError":{"TypeError":[],"Error":[]},"AsyncError":{"Error":[]},"_AsyncCompleter":{"_Completer":["1"]},"_Future":{"Future":["1"]},"_Zone":{"Zone":[]},"_RootZone":{"_Zone":[],"Zone":[]},"_HashMap":{"MapBase":["1","2"],"Map":["1","2"]},"_IdentityHashMap":{"_HashMap":["1","2"],"MapBase":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"_HashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"_HashMapKeyIterator":{"Iterator":["1"]},"_LinkedHashSet":{"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"SetBase":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_JsonMap":{"MapBase":["String","@"],"Map":["String","@"],"MapBase.K":"String","MapBase.V":"@"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"Iterable.E":"String","ListIterable.E":"String"},"double":{"num":[]},"int":{"num":[]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"StackOverflowError":{"Error":[]},"_StringStackTrace":{"StackTrace":[]},"Int8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8ClampedList":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Int16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Int32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Float32List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"]},"Float64List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"JavaScriptFunction":"LegacyJavaScriptObject","PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","NativeArrayBuffer":"NativeByteBuffer","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JavaScriptObject":{"JSObject":[]},"LegacyJavaScriptObject":{"JSObject":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"JSObject":[],"Iterable":["1"]},"JSArraySafeToStringHook":{"SafeToStringHook":[]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"JSObject":[],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"double":[],"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"double":[],"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"TrustedGetRuntimeType":[]},"LateError":{"Error":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListIterable.E":"2"},"_KeysOrValuesOrElementsIterator":{"Iterator":["1"]},"ConstantSet":{"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ConstantStringSet":{"ConstantSet":["1"],"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"NullError":{"TypeError":[],"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"_StackTrace":{"StackTrace":[]},"Closure":{"Function":[]},"Closure0Args":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"RuntimeError":{"Error":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"LinkedHashMapKeysIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"NativeByteBuffer":{"JSObject":[],"ByteBuffer":[],"TrustedGetRuntimeType":[]},"NativeTypedData":{"JSObject":[]},"NativeByteData":{"ByteData":[],"JSObject":[],"TrustedGetRuntimeType":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"],"JSObject":[]},"NativeTypedArrayOfDouble":{"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeFloat32List":{"Float32List":[],"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"],"TrustedGetRuntimeType":[],"ListBase.E":"double"},"NativeFloat64List":{"Float64List":[],"ListBase":["double"],"List":["double"],"JavaScriptIndexingBehavior":["double"],"EfficientLengthIterable":["double"],"JSObject":[],"Iterable":["double"],"FixedLengthListMixin":["double"],"TrustedGetRuntimeType":[],"ListBase.E":"double"},"NativeInt16List":{"Int16List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeInt32List":{"Int32List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeInt8List":{"Int8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint16List":{"Uint16List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint32List":{"Uint32List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8ClampedList":{"Uint8ClampedList":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"JSObject":[],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Error":{"Error":[]},"_TypeError":{"TypeError":[],"Error":[]},"AsyncError":{"Error":[]},"_AsyncCompleter":{"_Completer":["1"]},"_Future":{"Future":["1"]},"_Zone":{"Zone":[]},"_RootZone":{"_Zone":[],"Zone":[]},"_HashMap":{"MapBase":["1","2"],"Map":["1","2"]},"_IdentityHashMap":{"_HashMap":["1","2"],"MapBase":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"_HashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"_HashMapKeyIterator":{"Iterator":["1"]},"_LinkedHashSet":{"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"SetBase":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_JsonMap":{"MapBase":["String","@"],"Map":["String","@"],"MapBase.K":"String","MapBase.V":"@"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"Iterable.E":"String","ListIterable.E":"String"},"double":{"num":[]},"int":{"num":[]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"StackOverflowError":{"Error":[]},"_StringStackTrace":{"StackTrace":[]},"Int8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8ClampedList":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Int16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Int32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Float32List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"]},"Float64List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"NativeTypedArray":1,"_SetBase":1,"Codec":2,"Converter":2}'));
   var string$ = {
     Error_: "Error handler must accept one Object or one Object and a StackTrace as arguments, and return a value of the returned future's type"
@@ -6323,6 +6391,8 @@
     B.BasicFoodCategory_pOd = new A.BasicFoodCategory("prepared-meals", 13, "preparedMeals");
     B.BasicFoodCategory_other_14_other = new A.BasicFoodCategory("other", 14, "other");
     B.List_J9W = makeConstList([B.BasicFoodCategory_fruit_0_fruit, B.BasicFoodCategory_vegetables_1_vegetables, B.BasicFoodCategory_grains_2_grains, B.BasicFoodCategory_bakery_3_bakery, B.BasicFoodCategory_legumes_4_legumes, B.BasicFoodCategory_QuB, B.BasicFoodCategory_meat_6_meat, B.BasicFoodCategory_qm0, B.BasicFoodCategory_LBu, B.BasicFoodCategory_rpl, B.BasicFoodCategory_zNv, B.BasicFoodCategory_sweeteners_11_sweeteners, B.BasicFoodCategory_beverages_12_beverages, B.BasicFoodCategory_pOd, B.BasicFoodCategory_other_14_other], A.findType("JSArray<BasicFoodCategory>"));
+    B.Object_K8z = {"bls-e107122": 0, "bls-e111100": 1, "bls-e111132": 2, "bls-e111162": 3, "bls-e111182": 4};
+    B.Set_vioq9 = new A.ConstantStringSet(B.Object_K8z, 5, A.findType("ConstantStringSet<String>"));
     B.Type_ByteBuffer_rqD = A.typeLiteral("ByteBuffer");
     B.Type_ByteData_9dB = A.typeLiteral("ByteData");
     B.Type_Float32List_9Kz = A.typeLiteral("Float32List");

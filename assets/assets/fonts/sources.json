@@ -1,0 +1,140 @@
+[
+  {
+    "path": "assets/fonts/BricolageGrotesque-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/2d910251022c851e26d045b9202776cf98dd15af8e539ebbda16503332a2b016.ttf",
+    "sha256": "2d910251022c851e26d045b9202776cf98dd15af8e539ebbda16503332a2b016",
+    "size": 82168
+  },
+  {
+    "path": "assets/fonts/BricolageGrotesque-Medium.ttf",
+    "url": "https://fonts.gstatic.com/s/a/2a573cccd8a40c7163eb815be9f0ea609b0d2a613c5d3474c077b01253fde8d5.ttf",
+    "sha256": "2a573cccd8a40c7163eb815be9f0ea609b0d2a613c5d3474c077b01253fde8d5",
+    "size": 82220
+  },
+  {
+    "path": "assets/fonts/BricolageGrotesque-SemiBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/6c6cd547cb081dee4b2a4462c3e5d72091ca69386392b3ac3a73463f244f019e.ttf",
+    "sha256": "6c6cd547cb081dee4b2a4462c3e5d72091ca69386392b3ac3a73463f244f019e",
+    "size": 82280
+  },
+  {
+    "path": "assets/fonts/BricolageGrotesque-Bold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/6ed0995ec51fc124e42efc90831a6afe3825e317f7969a599ac7d654bc2d6821.ttf",
+    "sha256": "6ed0995ec51fc124e42efc90831a6afe3825e317f7969a599ac7d654bc2d6821",
+    "size": 82180
+  },
+  {
+    "path": "assets/fonts/BricolageGrotesque-ExtraBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/c56674eff2988656134508882d20ee5f74974787bcda3ba0eff27eed54576957.ttf",
+    "sha256": "c56674eff2988656134508882d20ee5f74974787bcda3ba0eff27eed54576957",
+    "size": 82308
+  },
+  {
+    "path": "assets/fonts/PlusJakartaSans-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/80501e2c94323d8b8d48b29bc73aa042539f0a6e62c3afe318980de7b7b19267.ttf",
+    "sha256": "80501e2c94323d8b8d48b29bc73aa042539f0a6e62c3afe318980de7b7b19267",
+    "size": 63320
+  },
+  {
+    "path": "assets/fonts/PlusJakartaSans-Medium.ttf",
+    "url": "https://fonts.gstatic.com/s/a/d69a8aa421db9df3e7d624119c9ee103d342e1dacff8bb29e36eebd379fdb7de.ttf",
+    "sha256": "d69a8aa421db9df3e7d624119c9ee103d342e1dacff8bb29e36eebd379fdb7de",
+    "size": 63388
+  },
+  {
+    "path": "assets/fonts/PlusJakartaSans-SemiBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/ba0432c50b99a58d041dc19291e1ff0a3c0e17fa254fe58510a96248426718d6.ttf",
+    "sha256": "ba0432c50b99a58d041dc19291e1ff0a3c0e17fa254fe58510a96248426718d6",
+    "size": 63392
+  },
+  {
+    "path": "assets/fonts/PlusJakartaSans-Bold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/dbf8d18a2d1c11f9b68005f52aaefe3974273175b1048047d662a13858c1e9e6.ttf",
+    "sha256": "dbf8d18a2d1c11f9b68005f52aaefe3974273175b1048047d662a13858c1e9e6",
+    "size": 63316
+  },
+  {
+    "path": "assets/fonts/PlusJakartaSans-ExtraBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/16b18d8f75d223acf2959d157e76addcbf64e153a7262b05aefc2f4c6f47ebca.ttf",
+    "sha256": "16b18d8f75d223acf2959d157e76addcbf64e153a7262b05aefc2f4c6f47ebca",
+    "size": 63352
+  },
+  {
+    "path": "assets/fonts/HankenGrotesk-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/956414e58193ccf0e310474863f25057523ad3572d5c9d6ba75ddf77b3babf12.ttf",
+    "sha256": "956414e58193ccf0e310474863f25057523ad3572d5c9d6ba75ddf77b3babf12",
+    "size": 57224
+  },
+  {
+    "path": "assets/fonts/HankenGrotesk-Medium.ttf",
+    "url": "https://fonts.gstatic.com/s/a/6343cd88c58a6c2f1156bbb86882e0c3f04db34be2bc66e7a294ef5c0a55f4f5.ttf",
+    "sha256": "6343cd88c58a6c2f1156bbb86882e0c3f04db34be2bc66e7a294ef5c0a55f4f5",
+    "size": 57216
+  },
+  {
+    "path": "assets/fonts/HankenGrotesk-SemiBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/6dd6e94c87b1cfaac4fb7c3a50827eca02021238e3bb02d7a00bb5a94ea070a2.ttf",
+    "sha256": "6dd6e94c87b1cfaac4fb7c3a50827eca02021238e3bb02d7a00bb5a94ea070a2",
+    "size": 57188
+  },
+  {
+    "path": "assets/fonts/HankenGrotesk-Bold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/753c8c35eee400eb1a46e4a46012c1e50a1e3b95fe7668cece45411d7d957b47.ttf",
+    "sha256": "753c8c35eee400eb1a46e4a46012c1e50a1e3b95fe7668cece45411d7d957b47",
+    "size": 57120
+  },
+  {
+    "path": "assets/fonts/HankenGrotesk-ExtraBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/0be566fab5fdf4b52b257bcb10f7f831e17a74f73df9f420db4592676a5886d3.ttf",
+    "sha256": "0be566fab5fdf4b52b257bcb10f7f831e17a74f73df9f420db4592676a5886d3",
+    "size": 57172
+  },
+  {
+    "path": "assets/fonts/Inter-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/ecdb53099b1a68cd24c6900ea5beeafec81bd3c8cb9d0f3c51b9986583ba3982.ttf",
+    "sha256": "ecdb53099b1a68cd24c6900ea5beeafec81bd3c8cb9d0f3c51b9986583ba3982",
+    "size": 303384
+  },
+  {
+    "path": "assets/fonts/Inter-Medium.ttf",
+    "url": "https://fonts.gstatic.com/s/a/492dec3bc33255f9d81bd5fb18704ad72f96f9b9318e4171bc9f9be9dd4bf44b.ttf",
+    "sha256": "492dec3bc33255f9d81bd5fb18704ad72f96f9b9318e4171bc9f9be9dd4bf44b",
+    "size": 308288
+  },
+  {
+    "path": "assets/fonts/Inter-SemiBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/d7ba633bab7f40576e539a7e934a1301d7618dceea59c743de477c2c493462fc.ttf",
+    "sha256": "d7ba633bab7f40576e539a7e934a1301d7618dceea59c743de477c2c493462fc",
+    "size": 309376
+  },
+  {
+    "path": "assets/fonts/Inter-Bold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/b7e339223d56e8c4210c86f1ba87b3d43d6c47e03956ea56f0a7a938ae61b2a3.ttf",
+    "sha256": "b7e339223d56e8c4210c86f1ba87b3d43d6c47e03956ea56f0a7a938ae61b2a3",
+    "size": 309732
+  },
+  {
+    "path": "assets/fonts/Inter-ExtraBold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/06fb8b97ad04af6b7fa9f2fb17d3763d28f6694f777f33dcf147e84c55a4e81a.ttf",
+    "sha256": "06fb8b97ad04af6b7fa9f2fb17d3763d28f6694f777f33dcf147e84c55a4e81a",
+    "size": 310348
+  },
+  {
+    "path": "assets/fonts/SpaceMono-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/aa54b134023455bae209a7394be5d936eac1bca46d8e605d136c0639440b7acd.ttf",
+    "sha256": "aa54b134023455bae209a7394be5d936eac1bca46d8e605d136c0639440b7acd",
+    "size": 48212
+  },
+  {
+    "path": "assets/fonts/SpaceMono-Bold.ttf",
+    "url": "https://fonts.gstatic.com/s/a/b4df88257fca899eb832e0c60a09e8ba54295efe311316176cc067e7b742a334.ttf",
+    "sha256": "b4df88257fca899eb832e0c60a09e8ba54295efe311316176cc067e7b742a334",
+    "size": 47484
+  },
+  {
+    "path": "assets/fonts/Poppins-Regular.ttf",
+    "url": "https://fonts.gstatic.com/s/a/2dd6eb23c4972b346197d272c4e2479b89ed240ece4d2b0e0cd89f0c1caa2710.ttf",
+    "sha256": "2dd6eb23c4972b346197d272c4e2479b89ed240ece4d2b0e0cd89f0c1caa2710",
+    "size": 154628
+  }
+]

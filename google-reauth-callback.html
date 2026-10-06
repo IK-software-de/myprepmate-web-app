@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Google-Bestätigung</title>
+  </head>
+  <body>
+    <p id="status">Zurück zu MyPrepMate …</p>
+    <script>
+      (function () {
+        var status = document.getElementById('status');
+        var opener = window.opener;
+        if (!opener) {
+          status.textContent = 'Bitte kehre zu MyPrepMate zurück und versuche es erneut.';
+          return;
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get('code');
+        var error = params.get('error_code') || params.get('error');
+        if (code) {
+          opener.postMessage('prepmate-google-reauth|' + code, window.location.origin);
+          window.close();
+          return;
+        }
+
+        opener.postMessage(
+          'prepmate-google-reauth-error|' + (error || 'callback_failed'),
+          window.location.origin
+        );
+        window.close();
+      }());
+    </script>
+  </body>
+</html>

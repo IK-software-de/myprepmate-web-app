@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": 1,
+  "datasetVersion": 2,
   "source": {
     "id": "bls",
     "title": "Bundeslebensmittelschlüssel (BLS), Version 4.0 – Deutsche Nährstoffdatenbank",
@@ -12,7 +12,7 @@
     "url": "https://www.blsdb.de/",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "modifications": "Umwandlung des Dateiformats; Reduktion auf die Hauptmakronährstoffe"
+    "modifications": "Formatumwandlung und Auswahl der Hauptmakronährstoffe; BLS-Quelldaten bleiben je 100 g. Der lokale Seeder leitet ganze Hühnereier als Stückwerte pro Ei Größe M (50 g essbarer Anteil) ab."
   },
   "foods": [
     {
